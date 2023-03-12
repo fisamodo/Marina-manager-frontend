@@ -4,11 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { PageContainer } from "../components/PageContainer";
 import { Txt } from "../components/Txt";
 import { css } from "@emotion/react";
+import { useRecoilState } from "recoil";
+import { userAtom } from "../../stores/user-atom";
 /** @jsxImportSource @emotion/react */
 
 export const LandingPage = () => {
   const navigate = useNavigate();
-
+  const [user, setUser] = useRecoilState(userAtom);
   const navbarStyle = css`
     width: 100%;
     height: 5rem;
@@ -22,6 +24,7 @@ export const LandingPage = () => {
     localStorage.removeItem("token");
     navigate(0);
   };
+
   return (
     <PageContainer>
       <nav css={navbarStyle}>

@@ -1,4 +1,3 @@
-import { IAnswer, ISurvey } from "../api-types";
 import { ILoginInfo, ISignupUserInfo } from "../types";
 import { axiosBackendClient } from "./axiosServices/axiosBackendClient";
 

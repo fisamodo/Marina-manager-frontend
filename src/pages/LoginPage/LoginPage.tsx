@@ -6,7 +6,6 @@ import { Txt } from "../components/Txt";
 import * as yup from "yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { SimpleTextareaInputField } from "../components/fields/SimpleTextareaInputField";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 import { PageContainer } from "../components/PageContainer";
@@ -96,7 +95,6 @@ export const LoginPage = () => {
       const { data } = await userRepository.login(values);
       localStorage.setItem("token", data);
       navigate("/");
-      console.log("Values: ", data);
       setIsSubmitting(false);
       toast.success("Success");
     } catch (e: AxiosError | any) {

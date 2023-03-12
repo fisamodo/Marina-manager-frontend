@@ -1,7 +1,6 @@
 import { CheckIcon } from "@heroicons/react/solid";
 import Select from "react-select";
 import { useController, useFormContext } from "react-hook-form";
-
 import { ErrorText } from "../ErrorText";
 import React from "react";
 import { Txt } from "../Txt";

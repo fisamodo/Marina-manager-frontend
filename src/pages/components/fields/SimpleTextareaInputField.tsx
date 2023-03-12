@@ -1,7 +1,5 @@
 import { useController, useFormContext } from "react-hook-form";
-
 import { ExclamationCircleIcon } from "@heroicons/react/solid";
-
 /** @jsxImportSource @emotion/react */
 import { css, SerializedStyles } from "@emotion/react";
 interface ISimpleTextareaInputField {

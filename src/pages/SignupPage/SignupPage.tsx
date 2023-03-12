@@ -6,7 +6,6 @@ import { Txt } from "../components/Txt";
 import * as yup from "yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { SimpleTextareaInputField } from "../components/fields/SimpleTextareaInputField";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
 import { PageContainer } from "../components/PageContainer";
@@ -97,8 +96,7 @@ export const SignupPage = () => {
   const onSubmit = methods.handleSubmit(async (values) => {
     try {
       setIsSubmitting(true);
-      const data = await userRepository.signUp(values);
-      console.log("Values: ", data);
+      await userRepository.signUp(values);
       setIsSubmitting(false);
       toast.success("Success");
       navigate("/login");

@@ -1,11 +1,5 @@
 import React from "react";
-import { publicRoutes } from "./routes/public-routes";
-import {
-  createBrowserRouter,
-  Route,
-  RouterProvider,
-  Routes,
-} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { SignupPage } from "./pages/SignupPage/SignupPage";
 import { ProtectedRoutes } from "./routes/ProtectedRoutes";
 import { LoginPage } from "./pages/LoginPage/LoginPage";

@@ -1,6 +1,5 @@
 import React from "react";
 import { Txt } from "./Txt";
-
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 interface IErrorTextProps {
