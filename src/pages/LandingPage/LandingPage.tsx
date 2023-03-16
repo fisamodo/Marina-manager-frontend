@@ -22,8 +22,8 @@ export const LandingPage = () => {
   `;
 
   const handleLogout = async () => {
-    localStorage.removeItem("token");
     await userRepository.logout();
+    setUser(undefined);
     navigate(0);
   };
 

@@ -12,14 +12,13 @@ class UserRepository {
     });
     return response.data;
   };
-  getUserByToken = async (token: string) => {
-    const response = await axiosBackendClient.post(`/users/${token}`);
+  getUserByToken = async () => {
+    const response = await axiosBackendClient.get("/users/verify");
     return response.data;
   };
 
   logout = async () => {
-    const response = await axiosBackendClient.post(`/users/logout`);
-    console.log("Here", response);
+    const response = await axiosBackendClient.post("/users/logout");
     return response.data;
   };
 }

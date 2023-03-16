@@ -1,4 +1,3 @@
-//@ts-nocheck
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -13,8 +12,12 @@ import { PageContainer } from "../components/PageContainer";
 import { css } from "@emotion/react";
 import { userRepository } from "../../api/userRepository";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
+import { useRecoilState } from "recoil";
+import { userAtom } from "../../stores/user-atom";
 
 export const LoginPage = () => {
+  const [user, setUser] = useRecoilState(userAtom);
+
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
 
@@ -92,11 +95,11 @@ export const LoginPage = () => {
   const onSubmit = methods.handleSubmit(async (values) => {
     try {
       setIsSubmitting(true);
-      const { data } = await userRepository.login(values);
-      localStorage.setItem("token", data);
-      navigate("/");
+      const { data: userState } = await userRepository.login(values);
+      setUser(userState);
       setIsSubmitting(false);
       toast.success("Success");
+      navigate("/");
     } catch (e: AxiosError | any) {
       console.error(e);
       toast.error("Error occured while logging in.");
