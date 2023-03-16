@@ -6,6 +6,7 @@ import { Txt } from "../components/Txt";
 import { css } from "@emotion/react";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../stores/user-atom";
+import { userRepository } from "../../api/userRepository";
 /** @jsxImportSource @emotion/react */
 
 export const LandingPage = () => {
@@ -20,8 +21,9 @@ export const LandingPage = () => {
     justify-content: space-between;
   `;
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
     localStorage.removeItem("token");
+    await userRepository.logout();
     navigate(0);
   };
 

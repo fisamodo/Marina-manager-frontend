@@ -99,7 +99,7 @@ export const LoginPage = () => {
       toast.success("Success");
     } catch (e: AxiosError | any) {
       console.error(e);
-      toast.error(e.request.responseText);
+      toast.error("Error occured while logging in.");
       setIsSubmitting(false);
     }
   });
@@ -126,7 +126,6 @@ export const LoginPage = () => {
               onClick={onSubmit}
               containerCss={signInButtonStyle}
             />
-            <Button text="asdas" onClick={() => navigate("/signup")} />
           </FormProvider>
         </div>
         <div css={signupContainerStyle}>
