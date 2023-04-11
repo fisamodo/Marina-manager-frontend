@@ -14,6 +14,7 @@ import { userRepository } from "../../api/userRepository";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { useRecoilState } from "recoil";
 import { userAtom } from "../../stores/user-atom";
+import { NavigateButton } from "../components/NavigateButton";
 
 export const LoginPage = () => {
   const [user, setUser] = useRecoilState(userAtom);
@@ -28,12 +29,16 @@ export const LoginPage = () => {
   `;
 
   const signupFormContainer = css`
-    width: 900px;
-    height: 500px;
+    width: 70%;
+    height: 65%;
     display: flex;
-    border-radius: 10px;
     box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
       0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+    @media (max-width: 725px) {
+      flex-direction: column;
+      box-shadow: 0, 0, 0;
+      border-radius: 0px;
+    }
   `;
 
   const signinRedirectContainerStyle = css`
@@ -45,10 +50,14 @@ export const LoginPage = () => {
     background-color: #5da9e7;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    @media (max-width: 725px) {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
   `;
 
   const signupContainerStyle = css`
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -61,17 +70,28 @@ export const LoginPage = () => {
   const signInButtonStyle = css`
     background-color: #fff;
     padding: 0.625rem 2rem;
+    width: 50%;
   `;
   const signUpButtonStyle = css`
     padding: 0.625rem 2rem;
   `;
 
-  const inputFieldStyle = css`
+  const inputFieldContainerStyle = css`
+    display: flex;
+    justify-content: center;
     outline: none;
     border: none;
     border-radius: 10px;
     margin: 8px 0px;
     font-size: 1rem;
+    width: 100%;
+  `;
+  const inputFieldInputStyle = css`
+    width: 80%;
+  `;
+
+  const signupTextContainer = css`
+    padding: 1rem 0rem;
   `;
 
   const schema = yup.object().shape({
@@ -115,13 +135,15 @@ export const LoginPage = () => {
               id={"email"}
               name={"email"}
               placeholder={"Enter your email"}
-              containerCss={inputFieldStyle}
+              containerCss={inputFieldContainerStyle}
+              inputCss={inputFieldInputStyle}
             />
             <SimpleInputField
               id={"password"}
               name={"password"}
               placeholder={"Enter your password"}
-              containerCss={inputFieldStyle}
+              containerCss={inputFieldContainerStyle}
+              inputCss={inputFieldInputStyle}
               type="password"
             />
             <Button
@@ -132,10 +154,11 @@ export const LoginPage = () => {
           </FormProvider>
         </div>
         <div css={signupContainerStyle}>
-          <Txt>New here?</Txt>
-          <Link to="/signup">
-            <Button text="Sign in" containerCss={signUpButtonStyle}></Button>
-          </Link>
+          <Txt containerCss={signupTextContainer}>New here?</Txt>
+          <Txt containerCss={signupTextContainer}>
+            Click on the button to proceed
+          </Txt>
+          <NavigateButton text={"Sign up"} navigateTo={"/signup"} />
         </div>
       </div>
     </PageContainer>

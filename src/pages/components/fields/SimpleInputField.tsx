@@ -10,7 +10,7 @@ interface ISimpleInputField {
   autoFocus?: boolean;
   id?: string;
   containerCss?: SerializedStyles;
-  inputCss?: string;
+  inputCss?: SerializedStyles;
 }
 
 export const SimpleInputField: React.FC<ISimpleInputField> = ({

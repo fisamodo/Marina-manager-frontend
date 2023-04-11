@@ -24,12 +24,15 @@ export const SignupPage = () => {
   `;
 
   const signupFormContainer = css`
-    width: 900px;
-    height: 500px;
+    width: 70%;
+    height: 65%;
     display: flex;
     border-radius: 10px;
     box-shadow: 0px 3px 3px -2px rgb(0 0 0 / 20%),
       0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
+    @media (max-width: 725px) {
+      flex-direction: column;
+    }
   `;
 
   const signinRedirectContainerStyle = css`
@@ -41,6 +44,10 @@ export const SignupPage = () => {
     background-color: #5da9e7;
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    @media (max-width: 725px) {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+    }
   `;
 
   const signupContainerStyle = css`
@@ -62,12 +69,22 @@ export const SignupPage = () => {
     padding: 0.625rem 2rem;
   `;
 
-  const inputFieldStyle = css`
+  const inputFieldContainerStyle = css`
+    display: flex;
+    justify-content: center;
     outline: none;
     border: none;
     border-radius: 10px;
     margin: 8px 0px;
     font-size: 1rem;
+    width: 100%;
+  `;
+  const inputFieldInputStyle = css`
+    width: 80%;
+  `;
+
+  const signupTextContainer = css`
+    padding: 1rem 0rem;
   `;
 
   const schema = yup.object().shape({
@@ -120,25 +137,29 @@ export const SignupPage = () => {
               id={"firstName"}
               name={"firstName"}
               placeholder={"Enter your first name"}
-              containerCss={inputFieldStyle}
+              containerCss={inputFieldContainerStyle}
+              inputCss={inputFieldInputStyle}
             />
             <SimpleInputField
               id={"lastName"}
               name={"lastName"}
               placeholder={"Enter your last name"}
-              containerCss={inputFieldStyle}
+              containerCss={inputFieldContainerStyle}
+              inputCss={inputFieldInputStyle}
             />
             <SimpleInputField
               id={"email"}
               name={"email"}
               placeholder={"Enter your email"}
-              containerCss={inputFieldStyle}
+              containerCss={inputFieldContainerStyle}
+              inputCss={inputFieldInputStyle}
             />
             <SimpleInputField
               id={"password"}
               name={"password"}
               placeholder={"Enter your password"}
-              containerCss={inputFieldStyle}
+              containerCss={inputFieldContainerStyle}
+              inputCss={inputFieldInputStyle}
               type="password"
             />
             <Button
