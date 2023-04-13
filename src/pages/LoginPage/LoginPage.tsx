@@ -13,11 +13,11 @@ import { css } from "@emotion/react";
 import { userRepository } from "../../api/userRepository";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { useRecoilState } from "recoil";
-import { userAtom } from "../../stores/user-atom";
 import { NavigateButton } from "../components/NavigateButton";
+import { useCurrentUser } from "../../stores/user-atom";
 
 export const LoginPage = () => {
-  const [user, setUser] = useRecoilState(userAtom);
+  const [user, setUser] = useCurrentUser();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();

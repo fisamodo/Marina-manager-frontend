@@ -5,13 +5,14 @@ import { PageContainer } from "../components/PageContainer";
 import { Txt } from "../components/Txt";
 import { css } from "@emotion/react";
 import { useRecoilState } from "recoil";
-import { userAtom } from "../../stores/user-atom";
 import { userRepository } from "../../api/userRepository";
+import { useCurrentUser, useResetUserState } from "../../stores/user-atom";
 /** @jsxImportSource @emotion/react */
 
 export const LandingPage = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useRecoilState(userAtom);
+  const [user, setUser] = useCurrentUser();
+  const logout = useResetUserState();
   const navbarStyle = css`
     width: 100%;
     height: 5rem;
@@ -23,10 +24,9 @@ export const LandingPage = () => {
 
   const handleLogout = async () => {
     await userRepository.logout();
-    setUser(undefined);
-    navigate(0);
+    logout();
   };
-
+  console.log(user);
   return (
     <PageContainer>
       <nav css={navbarStyle}>
