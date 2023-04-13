@@ -45,21 +45,28 @@ export const SimpleInputField: React.FC<ISimpleInputField> = ({
   `;
 
   const textAreaStyle = css`
+    background-color: #acaaaa;
     display: block;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 0.825rem;
     padding-right: 0.825rem;
     margin-bottom: 0;
-    color: #6b7280;
+    color: #ffffff;
     border-radius: 0.375rem;
     border-width: 1px;
     resize: none;
     text-align: center;
     overflow: hidden;
+    border: 0.6px solid #000000;
     &:focus {
       outline: 2px solid transparent;
       outline-offset: 2px;
+    }
+    ::placeholder {
+      color: #fff;
+      font-size: 0.8rem;
+      font-style: italic;
     }
   `;
   return (

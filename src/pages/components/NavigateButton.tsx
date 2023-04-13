@@ -30,6 +30,7 @@ export const NavigateButton: React.FC<INavigateButtonProps> = ({
     display: flex;
     width: 100%;
     margin: 0rem 1rem;
+    justify-content: center;
   `;
 
   const buttonContainerStyle = css`
@@ -42,10 +43,10 @@ export const NavigateButton: React.FC<INavigateButtonProps> = ({
     flex-direction: row;
     align-items: center;
     border-radius: 1.5rem;
-    border-width: 0;
     cursor: pointer;
     background-color: #5da9e7;
     width: 100%;
+    border: 0.6px solid #000000;
   `;
 
   const buttonTextStyle = css`

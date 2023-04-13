@@ -31,7 +31,7 @@ export const Button: React.FC<IButtonProps> = ({
     flex-direction: row;
     align-items: center;
     border-radius: 1.5rem;
-    border-width: 0;
+    border: 0.6px solid #000000;
     cursor: pointer;
     background-color: #5da9e7;
   `;

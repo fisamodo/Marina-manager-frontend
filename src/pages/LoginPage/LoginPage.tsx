@@ -72,8 +72,9 @@ export const LoginPage = () => {
     padding: 0.625rem 2rem;
     width: 50%;
   `;
+
   const signUpButtonStyle = css`
-    padding: 0.625rem 2rem;
+    width: 75%;
   `;
 
   const inputFieldContainerStyle = css`
@@ -91,7 +92,7 @@ export const LoginPage = () => {
   `;
 
   const signupTextContainer = css`
-    padding: 1rem 0rem;
+    margin: 0.65rem 0rem;
   `;
 
   const schema = yup.object().shape({
@@ -154,11 +155,11 @@ export const LoginPage = () => {
           </FormProvider>
         </div>
         <div css={signupContainerStyle}>
-          <Txt containerCss={signupTextContainer}>New here?</Txt>
-          <Txt containerCss={signupTextContainer}>
-            Click on the button to proceed
-          </Txt>
-          <NavigateButton text={"Sign up"} navigateTo={"/signup"} />
+          <NavigateButton
+            text={"Sign up"}
+            navigateTo={"/signup"}
+            containerCss={signUpButtonStyle}
+          />
         </div>
       </div>
     </PageContainer>

@@ -83,10 +83,6 @@ export const SignupPage = () => {
     width: 80%;
   `;
 
-  const signupTextContainer = css`
-    padding: 1rem 0rem;
-  `;
-
   const schema = yup.object().shape({
     firstName: yup.string().typeError("First name is required").required(),
     lastName: yup.string().typeError("Last name is required").required(),
