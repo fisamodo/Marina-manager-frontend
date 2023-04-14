@@ -3,6 +3,7 @@ import { Txt } from "./Txt";
 import { ICSSProps } from "../../types";
 /** @jsxImportSource @emotion/react */
 import { css, SerializedStyles } from "@emotion/react";
+import { themeColors } from "../../utils/color-schema";
 
 interface IButtonProps extends ICSSProps {
   type?: any;
@@ -33,7 +34,7 @@ export const Button: React.FC<IButtonProps> = ({
     border-radius: 1.5rem;
     border: 0.6px solid #000000;
     cursor: pointer;
-    background-color: #5da9e7;
+    background-color: ${themeColors.primary};
   `;
 
   const buttonTextStyle = css`

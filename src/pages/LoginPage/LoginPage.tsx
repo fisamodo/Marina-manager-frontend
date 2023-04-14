@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
-import { Txt } from "../components/Txt";
 import * as yup from "yup";
 import { FormProvider, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -12,9 +11,9 @@ import { PageContainer } from "../components/PageContainer";
 import { css } from "@emotion/react";
 import { userRepository } from "../../api/userRepository";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
-import { useRecoilState } from "recoil";
 import { NavigateButton } from "../components/NavigateButton";
 import { useCurrentUser } from "../../stores/user-atom";
+import { themeColors } from "../../utils/color-schema";
 
 export const LoginPage = () => {
   const [user, setUser] = useCurrentUser();
@@ -47,7 +46,7 @@ export const LoginPage = () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #5da9e7;
+    background-color: ${themeColors.primary};
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     @media (max-width: 725px) {
@@ -131,7 +130,7 @@ export const LoginPage = () => {
     <PageContainer containerCss={pageContainerStyle}>
       <div css={signupFormContainer}>
         <div css={signinRedirectContainerStyle}>
-          <FormProvider {...methods}>
+          <FormProvider {...(methods as any)}>
             <SimpleInputField
               id={"email"}
               name={"email"}

@@ -12,6 +12,7 @@ import { PageContainer } from "../components/PageContainer";
 import { css } from "@emotion/react";
 import { userRepository } from "../../api/userRepository";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
+import { themeColors } from "../../utils/color-schema";
 
 export const SignupPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -41,7 +42,7 @@ export const SignupPage = () => {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #5da9e7;
+    background-color: ${themeColors.primary};
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
     @media (max-width: 725px) {
@@ -128,7 +129,7 @@ export const SignupPage = () => {
           </Link>
         </div>
         <div css={signupContainerStyle}>
-          <FormProvider {...methods}>
+          <FormProvider {...(methods as any)}>
             <SimpleInputField
               id={"firstName"}
               name={"firstName"}

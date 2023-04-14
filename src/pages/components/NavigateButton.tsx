@@ -4,6 +4,7 @@ import { ICSSProps } from "../../types";
 /** @jsxImportSource @emotion/react */
 import { css, SerializedStyles } from "@emotion/react";
 import { Link } from "react-router-dom";
+import { themeColors } from "../../utils/color-schema";
 
 interface INavigateButtonProps extends ICSSProps {
   type?: any;
@@ -44,7 +45,7 @@ export const NavigateButton: React.FC<INavigateButtonProps> = ({
     align-items: center;
     border-radius: 1.5rem;
     cursor: pointer;
-    background-color: #5da9e7;
+    background-color: ${themeColors.primary};
     width: 100%;
     border: 0.6px solid #000000;
   `;

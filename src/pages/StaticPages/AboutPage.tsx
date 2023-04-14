@@ -1,12 +1,12 @@
 import React from "react";
 import { PageContainer } from "../components/PageContainer";
-import { NavBar } from "./NavBar";
+import { NavBar } from "../LandingPage/NavBar";
 
-export const LandingPage = () => {
+export const AboutPage = () => {
   return (
     <PageContainer>
       <NavBar />
-      <div>Landing</div>
+      <div>Navbar</div>
     </PageContainer>
   );
 };
