@@ -6,6 +6,7 @@ import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { NavBar } from "./pages/LandingPage/NavBar";
 import { AboutPage } from "./pages/StaticPages/AboutPage";
+import { ContactPage } from "./pages/ContactPage/ContactPage";
 
 export const AppNavigator = () => {
   return (
@@ -16,6 +17,7 @@ export const AppNavigator = () => {
       <Route element={<ProtectedRoutes />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
       </Route>
     </Routes>
   );
