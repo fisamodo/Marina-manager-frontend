@@ -9,4 +9,9 @@ export const navbarRoutes = [
     route: "/about",
     isAdminRoute: false,
   },
+  {
+    name: "Contact",
+    route: "/contact",
+    isAdminRoute: false,
+  }
 ];
