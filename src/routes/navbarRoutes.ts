@@ -13,5 +13,10 @@ export const navbarRoutes = [
     name: "Contact",
     route: "/contact",
     isAdminRoute: false,
-  }
+  },
+  {
+    name: "Admin Dashbaord",
+    route: "/admin-dashboard",
+    isAdminRoute: true,
+  },
 ];

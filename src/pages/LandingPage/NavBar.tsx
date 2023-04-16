@@ -7,12 +7,13 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { themeColors } from "../../utils/color-schema";
+import { useLogoutUser } from "../../api/UserServices/user-api";
 
 export const NavBar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
 
   const resetUserState = useResetUserState();
-  const logout = useResetUserState();
+  const logout = useLogoutUser();
 
   const handleLogout = async () => {
     resetUserState();

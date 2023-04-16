@@ -9,14 +9,15 @@ import { AxiosError } from "axios";
 import { PageContainer } from "../components/PageContainer";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { userRepository } from "../../api/userRepository";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { NavigateButton } from "../components/NavigateButton";
 import { useCurrentUser } from "../../stores/user-atom";
 import { themeColors } from "../../utils/color-schema";
+import { useLoginUser } from "../../api/UserServices/user-api";
 
 export const LoginPage = () => {
   const [user, setUser] = useCurrentUser();
+  const login = useLoginUser();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
@@ -104,7 +105,7 @@ export const LoginPage = () => {
       email: "",
       password: "",
     },
-    resolver: yupResolver(schema),
+    resolver: yupResolver(schema) as any,
     mode: "onSubmit",
   });
 
@@ -115,8 +116,8 @@ export const LoginPage = () => {
   const onSubmit = methods.handleSubmit(async (values) => {
     try {
       setIsSubmitting(true);
-      const { data: userState } = await userRepository.login(values);
-      setUser(userState);
+      const data = await login(values);
+      setUser(data);
       setIsSubmitting(false);
       toast.success("Success");
       navigate("/");

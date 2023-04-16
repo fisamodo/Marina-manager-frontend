@@ -5,8 +5,9 @@ import {
   useRecoilState,
   useResetRecoilState,
 } from "recoil";
+import { IUser } from "../api-types";
 
-export const useCurrentUser = (): [any, any] => {
+export const useCurrentUser = (): [IUser, any] => {
   const [currentUser, setCurrentUser] = useRecoilState(user);
   return [currentUser, setCurrentUser];
 };
