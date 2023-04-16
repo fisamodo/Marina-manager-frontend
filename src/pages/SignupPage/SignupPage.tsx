@@ -10,13 +10,14 @@ import { AxiosError } from "axios";
 import { PageContainer } from "../components/PageContainer";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { userRepository } from "../../api/userRepository";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { themeColors } from "../../utils/color-schema";
+import { useRegisterUser } from "../../api/UserServices/user-api";
 
 export const SignupPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
+  const register = useRegisterUser();
 
   const pageContainerStyle = css`
     display: flex;
@@ -109,7 +110,7 @@ export const SignupPage = () => {
   const onSubmit = methods.handleSubmit(async (values) => {
     try {
       setIsSubmitting(true);
-      await userRepository.signUp(values);
+      await register(values);
       setIsSubmitting(false);
       toast.success("Success");
       navigate("/login");

@@ -7,6 +7,7 @@ import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { NavBar } from "./pages/LandingPage/NavBar";
 import { AboutPage } from "./pages/StaticPages/AboutPage";
 import { ContactPage } from "./pages/ContactPage/ContactPage";
+import { AdminDashboard } from "./pages/AdminPages/AdminDashboard/AdminDashboard";
 
 export const AppNavigator = () => {
   return (
@@ -18,6 +19,7 @@ export const AppNavigator = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Route>
     </Routes>
   );
