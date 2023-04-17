@@ -17,7 +17,11 @@ export const AdminDashboard = () => {
       <NavBar />
       <div>Admin Dashboard</div>
       {userData?.map((user, index) => (
-        <div>{user.firstName}</div>
+        <>
+          <div>
+            {user.firstName} {user.lastName} {user.userType}
+          </div>
+        </>
       ))}
     </PageContainer>
   );

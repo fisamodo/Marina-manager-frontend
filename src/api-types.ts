@@ -1,9 +1,9 @@
 export interface IUser {
   _id: string;
   firstName: string;
-  lastname: string;
+  lastName: string;
   email: string;
   password: string;
-  usertype: UserType;
+  userType: UserType;
 }
 export type UserType = "admin" | "employee";
