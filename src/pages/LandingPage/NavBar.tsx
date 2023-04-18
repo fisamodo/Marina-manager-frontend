@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import { useResetUserState } from "../../stores/user-atom";
-import { navbarRoutes } from "../../routes/navbarRoutes";
+import { useCurrentUser, useResetUserState } from "../../stores/user-atom";
+import { publicRoutes } from "../../routes/navbarRoutes";
+import { privateRoutes } from "../../routes/navbarRoutes";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,10 +12,9 @@ import { useLogoutUser } from "../../api/UserServices/user-api";
 
 export const NavBar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
-
+  const [user] = useCurrentUser();
   const resetUserState = useResetUserState();
   const logout = useLogoutUser();
-
   const handleLogout = async () => {
     resetUserState();
     logout();
@@ -34,15 +34,25 @@ export const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {navbarRoutes.map(({ name, route, isAdminRoute }, index) => (
+            {publicRoutes.map(({ name, route, isAdminRoute }, index) => (
               <Nav.Link
                 href={route}
-                id={index.toString()!}
+                id={name + "-" + index.toString()!}
                 css={navbarLinksStyle}
               >
                 {name}
               </Nav.Link>
             ))}
+            {user.userType === "admin" &&
+              privateRoutes.map(({ name, route, isAdminRoute }, index) => (
+                <Nav.Link
+                  href={route}
+                  id={name + "-" + index.toString()!}
+                  css={navbarLinksStyle}
+                >
+                  {name}
+                </Nav.Link>
+              ))}
           </Nav>
           <Nav>
             <Nav.Link

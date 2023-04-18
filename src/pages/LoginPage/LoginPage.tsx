@@ -116,8 +116,8 @@ export const LoginPage = () => {
   const onSubmit = methods.handleSubmit(async (values) => {
     try {
       setIsSubmitting(true);
-      const data = await login(values);
-      setUser(data);
+      const user = await login(values);
+      setUser(user);
       setIsSubmitting(false);
       toast.success("Success");
       navigate("/");

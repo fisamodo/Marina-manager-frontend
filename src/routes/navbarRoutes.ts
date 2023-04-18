@@ -1,4 +1,4 @@
-export const navbarRoutes = [
+export const publicRoutes = [
   {
     name: "Home",
     route: "/",
@@ -14,9 +14,12 @@ export const navbarRoutes = [
     route: "/contact",
     isAdminRoute: false,
   },
+];
+
+export const privateRoutes = [
   {
     name: "Admin Dashbaord",
     route: "/admin-dashboard",
     isAdminRoute: true,
-  },
-];
+  }
+]
