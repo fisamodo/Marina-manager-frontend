@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { SignupPage } from "./pages/SignupPage/SignupPage";
 import { ProtectedRoutes } from "./routes/ProtectedRoutes";
+import { AdminRoutes } from "./routes/AdminRoutes";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
 import { NavBar } from "./pages/LandingPage/NavBar";
@@ -19,6 +20,9 @@ export const AppNavigator = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+      </Route>
+
+      <Route element={<AdminRoutes />}>
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Route>
     </Routes>
