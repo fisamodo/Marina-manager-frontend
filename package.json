@@ -9,6 +9,7 @@
     "axios": "^1.2.1",
     "bootstrap": "^5.2.3",
     "emotion": "^11.0.0",
+    "rc-table": "^7.31.1",
     "react": "^18.1.0",
     "react-bootstrap": "^2.7.3",
     "react-dom": "^18.1.0",
