@@ -22,6 +22,13 @@ export const logout = async () => {
 };
 
 export const getAllUsers = async () => {
-  const { data } = await axiosBackendClient.get("users/all-users");
+  const { data } = await axiosBackendClient.get("/users/all-users");
+  return data;
+};
+
+export const promoteDepromoteUsers = async (userId: string) => {
+  const { data } = await axiosBackendClient.post(
+    `/users/promote-depromote-user-type/${userId}`
+  );
   return data;
 };

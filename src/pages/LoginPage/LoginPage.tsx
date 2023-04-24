@@ -13,7 +13,7 @@ import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { NavigateButton } from "../components/NavigateButton";
 import { useCurrentUser } from "../../stores/user-atom";
 import { themeColors } from "../../utils/color-schema";
-import { useLoginUser } from "../../api/UserServices/user-api";
+import { useLoginUser } from "../../api/userServices/user-api";
 
 export const LoginPage = () => {
   const [user, setUser] = useCurrentUser();

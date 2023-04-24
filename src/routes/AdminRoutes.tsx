@@ -4,5 +4,5 @@ import { useCurrentUser } from "../stores/user-atom";
 
 export const AdminRoutes = () => {
   const [user] = useCurrentUser();
-  return user.userType === "admin" ? <Outlet /> : <Navigate to="/" />;
+  return user?.userType === "admin" && user ? <Outlet /> : <Navigate to="/" />;
 };

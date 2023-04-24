@@ -2,6 +2,7 @@ import {
   UseMutateAsyncFunction,
   useMutation,
   useQuery,
+  useQueryClient,
   UseQueryResult,
 } from "react-query";
 import { IUser } from "../../api-types";
@@ -9,6 +10,7 @@ import * as http from "./user-http";
 
 export const cacheKeys = {
   users: "users",
+  promoteDepromoteUsers: "promote-depromote-users",
 };
 
 export const useUser = () =>
@@ -50,4 +52,25 @@ export function useUsers(): UseQueryResult<IUser[], any> {
       throw error;
     },
   });
+}
+
+export function usePromoteDepromoteUser(): UseMutateAsyncFunction<
+  any,
+  string,
+  any
+> {
+  const queryClient = useQueryClient();
+
+  const { mutateAsync } = useMutation<any, string, any>(
+    http.promoteDepromoteUsers,
+    {
+      onError: (error) => {
+        throw error;
+      },
+      onSuccess: (error) => {
+        queryClient.refetchQueries(cacheKeys.users);
+      },
+    }
+  );
+  return mutateAsync;
 }

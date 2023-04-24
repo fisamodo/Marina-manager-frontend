@@ -1,6 +1,9 @@
 import React from "react";
 import { IUser } from "../../../api-types";
-import { useUsers } from "../../../api/UserServices/user-api";
+import {
+  usePromoteDepromoteUser,
+  useUsers,
+} from "../../../api/userServices/user-api";
 import { PageContainer } from "../../components/PageContainer";
 import { NavBar } from "../../LandingPage/NavBar";
 import Table from "rc-table";
@@ -11,6 +14,7 @@ import { Button } from "../../components/Button";
 
 export const AdminDashboard = () => {
   const { data: userData, isLoading, isError } = useUsers();
+  const promoteDepromoteUser = usePromoteDepromoteUser();
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -55,19 +59,23 @@ export const AdminDashboard = () => {
       width: 150,
     },
     {
-      title: "",
+      title: "Action",
       dataIndex: "button",
       key: "button",
-      width: 100,
+      width: 300,
     },
   ];
   const userDataWithControls = userData?.map((data) => {
+    const promotion = data.userType === "admin" ? "employee" : "admin";
     return {
       ...data,
       button: (
         <Button
-          text="Here"
-          onClick={() => console.log("Click for ", data.email)}
+          text={`${
+            promotion === "admin" ? "Promote" : "Depromote"
+          } to ${promotion}`}
+          onClick={() => promoteDepromoteUser(data._id)}
+          disabled={data.userType === "admin" && true}
         />
       ),
     };

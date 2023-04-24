@@ -12,7 +12,7 @@ import { PageContainer } from "../components/PageContainer";
 import { css } from "@emotion/react";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { themeColors } from "../../utils/color-schema";
-import { useRegisterUser } from "../../api/UserServices/user-api";
+import { useRegisterUser } from "../../api/userServices/user-api";
 
 export const SignupPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
