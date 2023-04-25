@@ -35,7 +35,6 @@ export const Button: React.FC<IButtonProps> = ({
     border: 0.6px solid #000000;
     cursor: pointer;
     background-color: ${themeColors.primary};
-    width: 100%;
     &:disabled {
       background-color: ${themeColors.primaryGrey};
       cursor: not-allowed;

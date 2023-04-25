@@ -1,4 +1,4 @@
-export const publicRoutes = [
+export const employeeRoutes = [
   {
     name: "Home",
     route: "/",
@@ -16,10 +16,15 @@ export const publicRoutes = [
   },
 ];
 
-export const privateRoutes = [
+export const adminRoutes = [
   {
     name: "Admin Dashbaord",
     route: "/admin-dashboard",
     isAdminRoute: true,
-  }
-]
+  },
+  {
+    name: "Admin Marina",
+    route: "/admin-marina",
+    isAdminRoute: true,
+  },
+];

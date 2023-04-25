@@ -5,10 +5,11 @@ import { ProtectedRoutes } from "./routes/ProtectedRoutes";
 import { AdminRoutes } from "./routes/AdminRoutes";
 import { LoginPage } from "./pages/LoginPage/LoginPage";
 import { LandingPage } from "./pages/LandingPage/LandingPage";
-import { NavBar } from "./pages/LandingPage/NavBar";
 import { AboutPage } from "./pages/StaticPages/AboutPage";
 import { ContactPage } from "./pages/ContactPage/ContactPage";
 import { AdminDashboard } from "./pages/AdminPages/AdminDashboard/AdminDashboard";
+import { AdminMarinaPage } from "./pages/AdminPages/AdminMarinaPage/AdminMarinaPage";
+import { CreateMarinaPage } from "./pages/AdminPages/AdminMarinaPage/CreateMarina/CreateMarinaPage";
 
 export const AppNavigator = () => {
   return (
@@ -24,6 +25,8 @@ export const AppNavigator = () => {
 
       <Route element={<AdminRoutes />}>
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
+        <Route path="/admin-marina" element={<AdminMarinaPage />} />
+        <Route path="/create-marina" element={<CreateMarinaPage />} />
       </Route>
     </Routes>
   );

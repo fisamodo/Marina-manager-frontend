@@ -8,7 +8,7 @@ import {
 import { IUser } from "../../api-types";
 import * as http from "./user-http";
 
-export const cacheKeys = {
+const cacheKeys = {
   users: "users",
   promoteDepromoteUsers: "promote-depromote-users",
 };

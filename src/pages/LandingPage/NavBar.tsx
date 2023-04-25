@@ -2,8 +2,7 @@ import React, { useState } from "react";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { useCurrentUser, useResetUserState } from "../../stores/user-atom";
-import { publicRoutes } from "../../routes/navbarRoutes";
-import { privateRoutes } from "../../routes/navbarRoutes";
+import { adminRoutes, employeeRoutes } from "../../routes/navbarRoutes";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -34,7 +33,7 @@ export const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            {publicRoutes.map(({ name, route, isAdminRoute }, index) => (
+            {employeeRoutes.map(({ name, route, isAdminRoute }, index) => (
               <Nav.Link
                 href={route}
                 id={name + "-" + index.toString()!}
@@ -44,7 +43,7 @@ export const NavBar = () => {
               </Nav.Link>
             ))}
             {user.userType === "admin" &&
-              privateRoutes.map(({ name, route, isAdminRoute }, index) => (
+              adminRoutes.map(({ name, route, isAdminRoute }, index) => (
                 <Nav.Link
                   href={route}
                   id={name + "-" + index.toString()!}

@@ -10,6 +10,7 @@ import Table from "rc-table";
 import { DataTable } from "../../components/DataTable";
 import { css } from "@emotion/react";
 import { Button } from "../../components/Button";
+import { ContentContainer } from "../../components/ContentContainer";
 /** @jsxImportSource @emotion/react */
 
 export const AdminDashboard = () => {
@@ -22,6 +23,10 @@ export const AdminDashboard = () => {
     return <div>Error!</div>;
   }
 
+  const buttonWidthStyle = css`
+    width: 100%;
+  `;
+
   const tableContainer = css`
     display: flex;
     justify-content: center;
@@ -29,16 +34,10 @@ export const AdminDashboard = () => {
 
   const columns = [
     {
-      title: "ID",
-      dataIndex: "_id",
-      key: "_id",
-      width: 100,
-    },
-    {
       title: "First name",
       dataIndex: "firstName",
       key: "firstName",
-      width: 150,
+      width: 200,
     },
     {
       title: "Last name",
@@ -76,6 +75,7 @@ export const AdminDashboard = () => {
           } to ${promotion}`}
           onClick={() => promoteDepromoteUser(data._id)}
           disabled={data.userType === "admin" && true}
+          containerCss={buttonWidthStyle}
         />
       ),
     };
@@ -83,13 +83,14 @@ export const AdminDashboard = () => {
   return (
     <PageContainer>
       <NavBar />
-      <div>Admin Dashboard</div>
-
-      <DataTable
-        columns={columns}
-        data={userDataWithControls}
-        containerCss={tableContainer}
-      />
+      <ContentContainer>
+        <div>Admin Dashboard</div>
+        <DataTable
+          columns={columns}
+          data={userDataWithControls}
+          containerCss={tableContainer}
+        />
+      </ContentContainer>
     </PageContainer>
   );
 };
