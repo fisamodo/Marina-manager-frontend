@@ -12,6 +12,7 @@ interface IButtonProps extends ICSSProps {
   disabled?: boolean;
   containerCss?: SerializedStyles;
   inputCss?: string;
+  cancelButton?: boolean;
 }
 
 export const Button: React.FC<IButtonProps> = ({
@@ -21,6 +22,7 @@ export const Button: React.FC<IButtonProps> = ({
   disabled,
   containerCss,
   inputCss,
+  cancelButton,
 }) => {
   const buttonContainerStyle = css`
     display: flex;
@@ -34,6 +36,7 @@ export const Button: React.FC<IButtonProps> = ({
     border-radius: 1.5rem;
     border: 0.6px solid #000000;
     cursor: pointer;
+    margin: 1rem 0rem;
     background-color: ${themeColors.primary};
     &:disabled {
       background-color: ${themeColors.primaryGrey};
@@ -49,11 +52,20 @@ export const Button: React.FC<IButtonProps> = ({
     justify-content: center;
   `;
 
+  const cancelButtonStyle = css`
+    background-color: #d3d3d3;
+    color: #fff;
+  `;
+
   return (
     <button
       type={type ?? "button"}
       disabled={disabled}
-      css={[buttonContainerStyle, containerCss]}
+      css={[
+        buttonContainerStyle,
+        containerCss,
+        cancelButton && cancelButtonStyle,
+      ]}
       onClick={onClick}
     >
       <Txt css={[buttonTextStyle, inputCss]}>{text}</Txt>

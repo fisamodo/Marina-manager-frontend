@@ -2,26 +2,32 @@ import { useController, useFormContext } from "react-hook-form";
 import { ExclamationCircleIcon } from "@heroicons/react/solid";
 /** @jsxImportSource @emotion/react */
 import { css, SerializedStyles } from "@emotion/react";
+import { Txt } from "../Txt";
 interface ISimpleInputField {
   name: string;
   type?: string;
   placeholder?: string;
+  fieldLabel?: string;
   rightText?: string;
   autoFocus?: boolean;
   id?: string;
   containerCss?: SerializedStyles;
   inputCss?: SerializedStyles;
+  fieldLabelStyle?: SerializedStyles;
+  horizontalLabelAlignment?: boolean;
 }
 
 export const SimpleInputField: React.FC<ISimpleInputField> = ({
   name,
   type,
   placeholder,
-  rightText,
+  fieldLabel,
   autoFocus,
   id,
   containerCss,
+  fieldLabelStyle,
   inputCss,
+  horizontalLabelAlignment,
 }) => {
   const { control } = useFormContext();
   const {
@@ -32,27 +38,33 @@ export const SimpleInputField: React.FC<ISimpleInputField> = ({
     control,
   });
 
-  const inputFieldContainer = css`
-    position: relative;
+  const inputFieldContainerHorizontal = css`
+    display: flex;
+    align-items: center;
+  `;
+  const inputFieldContainerVertial = css`
+    display: flex;
+    flex-direction: column;
   `;
 
   const circleIcon = css`
-    position: absolute;
-    top: 0.625rem;
-    right: 0.75rem;
     width: 1.25rem;
     height: 1.25rem;
   `;
 
+  const labelAndErrorAlignment = css`
+    display: flex;
+    align-items: center;
+  `;
+
   const textAreaStyle = css`
-    background-color: #acaaaa;
     display: block;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
     padding-left: 0.825rem;
     padding-right: 0.825rem;
     margin-bottom: 0;
-    color: #ffffff;
+    color: #acaaaa;
     border-radius: 0.375rem;
     border-width: 1px;
     resize: none;
@@ -64,14 +76,26 @@ export const SimpleInputField: React.FC<ISimpleInputField> = ({
       outline-offset: 2px;
     }
     ::placeholder {
-      color: #fff;
+      color: #acaaaa;
       font-size: 0.8rem;
       font-style: italic;
+      font-weight: 600;
     }
   `;
   return (
-    <div css={[inputFieldContainer, containerCss]}>
-      {error && <ExclamationCircleIcon css={circleIcon} color="#EF4444" />}
+    <div
+      css={[
+        horizontalLabelAlignment
+          ? inputFieldContainerHorizontal
+          : inputFieldContainerVertial,
+        containerCss,
+      ]}
+    >
+      <div css={labelAndErrorAlignment}>
+        {error && <ExclamationCircleIcon css={circleIcon} color="#EF4444" />}
+        <Txt css={[fieldLabelStyle]}>{fieldLabel}</Txt>
+      </div>
+
       <input
         type={type ?? "text"}
         id={id ?? ""}

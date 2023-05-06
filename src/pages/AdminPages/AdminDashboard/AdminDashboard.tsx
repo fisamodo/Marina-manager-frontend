@@ -64,19 +64,21 @@ export const AdminDashboard = () => {
       width: 300,
     },
   ];
-  const userDataWithControls = userData?.map((data) => {
+  const userDataWithControls = userData?.map((data, index) => {
     const promotion = data.userType === "admin" ? "employee" : "admin";
     return {
       ...data,
       button: (
-        <Button
-          text={`${
-            promotion === "admin" ? "Promote" : "Depromote"
-          } to ${promotion}`}
-          onClick={() => promoteDepromoteUser(data._id)}
-          disabled={data.userType === "admin" && true}
-          containerCss={buttonWidthStyle}
-        />
+        <div id={index.toString()}>
+          <Button
+            text={`${
+              promotion === "admin" ? "Promote" : "Depromote"
+            } to ${promotion}`}
+            onClick={() => promoteDepromoteUser(data._id)}
+            disabled={data.userType === "admin" && true}
+            containerCss={buttonWidthStyle}
+          />
+        </div>
       ),
     };
   });

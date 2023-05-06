@@ -86,6 +86,7 @@ export const LoginPage = () => {
     margin: 8px 0px;
     font-size: 1rem;
     width: 100%;
+    align-items: center;
   `;
   const inputFieldInputStyle = css`
     width: 80%;

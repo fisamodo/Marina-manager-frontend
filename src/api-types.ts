@@ -15,7 +15,7 @@ export interface IMarina {
   maxNumberOfSpeedBoats: number;
   maxNumberOfSmallBoats: number;
   maxNumberOfSailBoats: number;
-  maxNumberOfYacths: number;
+  maxNumberOfYachts: number;
   maxNumberOfFerries: number;
 }
 
