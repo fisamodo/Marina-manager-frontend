@@ -4,7 +4,6 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { AxiosError } from "axios";
 import { PageContainer } from "../../../components/PageContainer";
-import { NavBar } from "../../../LandingPage/NavBar";
 import { ContentContainer } from "../../../components/ContentContainer";
 import { SimpleInputField } from "../../../components/fields/SimpleInputField";
 import { Button } from "../../../components/Button";
@@ -16,14 +15,14 @@ import { NavigateFunction } from "react-router";
 import { IMarina } from "../../../../api-types";
 import { toast } from "react-toastify";
 
-interface ICreateMarinaForm {
+interface IEditMarinaForm {
   navigate: NavigateFunction;
-  onFormSubmit(marina: IMarinaFormData): void;
+  onFormSubmit(marina: IMarina): void;
+  marinaData: IMarina;
 }
 
-type IMarinaFormData = Omit<IMarina, "_id">;
-
 const schema = yup.object().shape({
+  _id: yup.string().required(),
   marinaName: yup.string().required("Marina name is required"),
   hasElectricPort: yup.boolean(),
   hasWaterSource: yup.boolean(),
@@ -34,22 +33,14 @@ const schema = yup.object().shape({
   maxNumberOfFerries: yup.number().required().min(0),
 });
 
-export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
+export const EditMarinaForm: React.FC<IEditMarinaForm> = ({
   navigate,
   onFormSubmit,
+  marinaData,
 }) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const methods = useForm({
-    defaultValues: {
-      marinaName: "",
-      hasElectricPort: false,
-      hasWaterSource: false,
-      maxNumberOfSpeedBoats: 0,
-      maxNumberOfSmallBoats: 0,
-      maxNumberOfSailBoats: 0,
-      maxNumberOfYachts: 0,
-      maxNumberOfFerries: 0,
-    },
+    defaultValues: marinaData,
     resolver: yupResolver(schema) as any,
     mode: "onSubmit",
   });
@@ -164,7 +155,7 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
             containerCss={inputFieldMargins}
           />
           <div css={formButtonsContainer}>
-            <Button text={"Create"} onClick={onSubmit} />
+            <Button text={"Update"} onClick={onSubmit} />
             <Button text={"Cancel"} onClick={() => navigate(-1)} cancelButton />
           </div>
         </FormProvider>

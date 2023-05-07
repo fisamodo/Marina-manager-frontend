@@ -1,4 +1,5 @@
 import { IMarina } from "../../api-types";
+import { IMarinaFormData } from "../../types";
 import { axiosBackendClient } from "../axiosServices/axiosBackendClient";
 
 export const getAllMarinas = async () => {
@@ -6,7 +7,13 @@ export const getAllMarinas = async () => {
   return data;
 };
 
-export const createMarina = async (marina: IMarina): Promise<IMarina> => {
+export const createMarina = async (marina: IMarinaFormData): Promise<IMarina> => {
   const { data } = await axiosBackendClient.post("/marinas", { marina });
+  return data;
+};
+
+
+export const editMarina = async (marina: IMarina): Promise<IMarina> => {
+  const { data } = await axiosBackendClient.patch("/marinas", { marina });
   return data;
 };
