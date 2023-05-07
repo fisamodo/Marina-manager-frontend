@@ -1,4 +1,4 @@
-import { useQuery, UseQueryResult } from "react-query";
+import { UseMutateAsyncFunction, useMutation, useQuery, UseQueryResult } from "react-query";
 import { IMarina } from "../../api-types";
 import * as http from "./marina-http";
 
@@ -16,4 +16,13 @@ export function useMarinas(): UseQueryResult<IMarina[], any> {
       },
     }
   );
+}
+
+export function useCreateMarina(): UseMutateAsyncFunction<IMarina, any, any> {
+  const { mutateAsync } = useMutation<IMarina, any, any>(http.createMarina, {
+    onError: (error: any) => {
+      throw error;
+    },
+  });
+  return mutateAsync;
 }

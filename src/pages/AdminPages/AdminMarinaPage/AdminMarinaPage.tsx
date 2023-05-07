@@ -35,17 +35,25 @@ export const AdminMarinaPage = () => {
     margin-top: 4rem;
   `;
 
-  const marinaDataWithControls = marinaData?.map((data) => {
+  const containerStyle = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
+  const marinaDataWithControls = marinaData?.map((data, index) => {
     return {
       ...data,
       hasWaterSource: data.hasWaterSource ? "Available" : "Unavailable",
       hasElectricPort: data.hasElectricPort ? "Available" : "Unavailable",
       button: (
-        <Button
-          text={"Edit"}
-          containerCss={buttonWidthStyle}
-          onClick={() => console.log(data._id)}
-        />
+        <div id={index.toString()}>
+          <Button
+            text={"Edit"}
+            containerCss={buttonWidthStyle}
+            onClick={() => console.log(data._id)}
+          />
+        </div>
       ),
     };
   });
@@ -95,8 +103,8 @@ export const AdminMarinaPage = () => {
     },
     {
       title: "Max number of yacths",
-      dataIndex: "maxNumberOfYacths",
-      key: "maxNumberOfYacths",
+      dataIndex: "maxNumberOfYachts",
+      key: "maxNumberOfYachts",
       width: 150,
     },
     {
@@ -110,7 +118,7 @@ export const AdminMarinaPage = () => {
   return (
     <PageContainer>
       <NavBar />
-      <ContentContainer>
+      <ContentContainer containerCss={containerStyle}>
         <DataTable
           columns={columns}
           data={marinaDataWithControls}

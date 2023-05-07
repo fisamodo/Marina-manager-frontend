@@ -6,7 +6,7 @@ import React from "react";
 import { Txt } from "../Txt";
 import { IDropdownOption } from "../../../types";
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { SerializedStyles, css } from "@emotion/react";
 import Switch from "react-switch";
 
 interface ISimpleSwitchField {
@@ -14,8 +14,8 @@ interface ISimpleSwitchField {
   fieldLabel: string;
   className?: string;
   styles?: any;
-  containerCss?: string;
-  inputCss?: string;
+  containerCss?: SerializedStyles;
+  inputCss?: SerializedStyles;
 }
 
 export const SimpleSwitchField: React.FC<ISimpleSwitchField> = ({
@@ -33,23 +33,15 @@ export const SimpleSwitchField: React.FC<ISimpleSwitchField> = ({
     name,
     control,
   });
-  const { value, label } = field.value;
 
-  const textSectionDropdownInputContainer = css`
-    position: relative;
-    width: 100%;
-  `;
-  const selectValueContainer = css`
+  const switchContainer = css`
     display: flex;
     align-items: center;
   `;
-  const valueLabelStyle = css`
-    color: #374151;
-    flex-grow: 1;
-  `;
-  const checkIconStyle = css`
-    width: 1rem;
-    height: 1rem;
+
+  const switchStyle = css`
+    margin: 1rem 0rem;
+    padding: 0rem 2rem;
   `;
 
   const errorMessageStyle = css`
@@ -57,13 +49,10 @@ export const SimpleSwitchField: React.FC<ISimpleSwitchField> = ({
   `;
 
   return (
-    <div
-      className={className}
-      css={[textSectionDropdownInputContainer, containerCss]}
-    >
-      <Txt>{label}</Txt>
+    <div className={className} css={[switchContainer, containerCss]}>
+      <Txt>{fieldLabel}</Txt>
       <Switch
-        css={[inputCss]}
+        css={[switchStyle, inputCss]}
         onChange={() => field.onChange(!field.value)}
         checked={field.value}
       />
