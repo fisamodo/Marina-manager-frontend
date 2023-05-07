@@ -7,7 +7,6 @@ export const getAllMarinas = async () => {
 };
 
 export const createMarina = async (marina: IMarina): Promise<IMarina> => {
-  console.log(marina)
   const { data } = await axiosBackendClient.post("/marinas", { marina });
   return data;
 };
