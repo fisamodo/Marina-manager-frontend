@@ -51,7 +51,7 @@ export const AdminMarinaPage = () => {
           <Button
             text={"Edit"}
             containerCss={buttonWidthStyle}
-            onClick={() => console.log(data._id)}
+            onClick={() => navigate("/edit-marina", { state: data })}
           />
         </div>
       ),

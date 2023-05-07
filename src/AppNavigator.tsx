@@ -10,6 +10,7 @@ import { ContactPage } from "./pages/ContactPage/ContactPage";
 import { AdminDashboard } from "./pages/AdminPages/AdminDashboard/AdminDashboard";
 import { AdminMarinaPage } from "./pages/AdminPages/AdminMarinaPage/AdminMarinaPage";
 import { CreateMarinaPage } from "./pages/AdminPages/AdminMarinaPage/CreateMarina/CreateMarinaPage";
+import { EditMarinaPage } from "./pages/AdminPages/AdminMarinaPage/EditMarina/EditMarinaPage";
 
 export const AppNavigator = () => {
   return (
@@ -27,6 +28,8 @@ export const AppNavigator = () => {
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/admin-marina" element={<AdminMarinaPage />} />
         <Route path="/create-marina" element={<CreateMarinaPage />} />
+        <Route path="/edit-marina" element={<EditMarinaPage />} />
+
       </Route>
     </Routes>
   );

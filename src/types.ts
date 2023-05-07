@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { IMarina } from "./api-types";
 
 export interface IDropdownOption {
   label: string;
@@ -18,3 +19,4 @@ export interface ISignupUserInfo {
 }
 
 export type ILoginInfo = Omit<ISignupUserInfo, "firstName" | "lastName">;
+export type IMarinaFormData = Omit<IMarina, "_id">;
