@@ -1,3 +1,5 @@
+import { IDropdownOption } from "./types";
+
 export interface IUser {
   _id: string;
   firstName: string;
@@ -5,6 +7,7 @@ export interface IUser {
   email: string;
   password: string;
   userType: UserType;
+  marinaId: string;
 }
 
 export interface IMarina {
@@ -20,3 +23,30 @@ export interface IMarina {
 }
 
 export type UserType = "admin" | "employee";
+
+export interface IOccupations {
+  registrationNumber: string;
+  isUsingElectricPort: boolean;
+  isUsingWaterPort: boolean;
+  boatType: IDropdownOption;
+  marinaId: string;
+}
+
+export enum BoatType {
+  SPEED_BOAT,
+  SMALL_BOAT,
+  SAIL_BOAT,
+  YACHT,
+  FERRY,
+}
+
+export interface IOccupancyStats {
+  amount: number;
+  boatType: string;
+  maxAmount: number;
+}
+
+export interface IMarinaWithOccupancy {
+  marina: IMarina;
+  occupancy: IOccupancyStats;
+}

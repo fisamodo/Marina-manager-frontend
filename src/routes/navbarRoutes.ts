@@ -14,6 +14,11 @@ export const employeeRoutes = [
     route: "/contact",
     isAdminRoute: false,
   },
+  {
+    name: "Occupations",
+    route: "/occupations",
+    isAdminRoute: false,
+  },
 ];
 
 export const adminRoutes = [
