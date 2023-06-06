@@ -11,6 +11,8 @@ import { AdminDashboard } from "./pages/AdminPages/AdminDashboard/AdminDashboard
 import { AdminMarinaPage } from "./pages/AdminPages/AdminMarinaPage/AdminMarinaPage";
 import { CreateMarinaPage } from "./pages/AdminPages/AdminMarinaPage/CreateMarina/CreateMarinaPage";
 import { EditMarinaPage } from "./pages/AdminPages/AdminMarinaPage/EditMarina/EditMarinaPage";
+import { OccupationsPage } from "./pages/OccupationsPages/OccupationsPage";
+import { CreateOccupationsPage } from "./pages/OccupationsPages/CreateOccupationsPage/CreateOccupationsPage.tsx";
 
 export const AppNavigator = () => {
   return (
@@ -22,6 +24,8 @@ export const AppNavigator = () => {
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
+        <Route path="/occupations" element={<OccupationsPage />} />
+        <Route path="/create-occupations" element={<CreateOccupationsPage />} />
       </Route>
 
       <Route element={<AdminRoutes />}>
@@ -29,7 +33,6 @@ export const AppNavigator = () => {
         <Route path="/admin-marina" element={<AdminMarinaPage />} />
         <Route path="/create-marina" element={<CreateMarinaPage />} />
         <Route path="/edit-marina" element={<EditMarinaPage />} />
-
       </Route>
     </Routes>
   );

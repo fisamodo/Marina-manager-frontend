@@ -51,6 +51,13 @@ export const AdminDashboard = () => {
       key: "email",
       width: 100,
     },
+
+    {
+      title: "Marina ID",
+      dataIndex: "marinaId",
+      key: "marinaId",
+      width: 100,
+    },
     {
       title: "User type",
       dataIndex: "userType",

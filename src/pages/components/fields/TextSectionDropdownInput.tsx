@@ -6,7 +6,7 @@ import React from "react";
 import { Txt } from "../Txt";
 import { IDropdownOption } from "../../../types";
 /** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
+import { css, SerializedStyles } from "@emotion/react";
 interface ITextSectionDropdownInput {
   name: string;
   options: IDropdownOption[];
@@ -15,6 +15,8 @@ interface ITextSectionDropdownInput {
   styles?: any;
   containerCss?: string;
   inputCss?: string;
+  fieldLabelStyle?: SerializedStyles;
+  fieldLabel?: string;
 }
 
 export const TextSectionDropdownInput: React.FC<ITextSectionDropdownInput> = ({
@@ -22,7 +24,10 @@ export const TextSectionDropdownInput: React.FC<ITextSectionDropdownInput> = ({
   placeholder,
   className,
   options,
+  fieldLabel,
   containerCss,
+  fieldLabelStyle,
+
   inputCss,
 }) => {
   const { control } = useFormContext();
@@ -62,6 +67,10 @@ export const TextSectionDropdownInput: React.FC<ITextSectionDropdownInput> = ({
       className={className}
       css={[textSectionDropdownInputContainer, containerCss]}
     >
+      {error && error.message && (
+        <ErrorText css={errorMessageStyle}>{error.message}</ErrorText>
+      )}
+      <Txt css={[fieldLabelStyle]}>{fieldLabel}</Txt>
       <Select
         css={[inputCss]}
         defaultValue={value === 0 ? {} : field.value}
@@ -78,9 +87,6 @@ export const TextSectionDropdownInput: React.FC<ITextSectionDropdownInput> = ({
           </div>
         )}
       />
-      {error && error.message && (
-        <ErrorText css={errorMessageStyle}>{error.message}</ErrorText>
-      )}
     </div>
   );
 };

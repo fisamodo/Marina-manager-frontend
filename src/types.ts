@@ -20,3 +20,11 @@ export interface ISignupUserInfo {
 
 export type ILoginInfo = Omit<ISignupUserInfo, "firstName" | "lastName">;
 export type IMarinaFormData = Omit<IMarina, "_id">;
+
+export enum BoatType {
+  SPEED_BOAT,
+  SMALL_BOAT,
+  SAIL_BOAT,
+  YACHT,
+  FERRY,
+}
