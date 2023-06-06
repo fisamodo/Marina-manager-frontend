@@ -24,11 +24,6 @@ export const AdminMarinaPage = () => {
     width: 100%;
   `;
 
-  const tableContainer = css`
-    display: flex;
-    justify-content: center;
-  `;
-
   const createMarinaButtonContainer = css`
     display: flex;
     justify-content: flex-end;
@@ -118,18 +113,14 @@ export const AdminMarinaPage = () => {
   return (
     <PageContainer>
       <NavBar />
-      <ContentContainer containerCss={containerStyle}>
-        <DataTable
-          columns={columns}
-          data={marinaDataWithControls}
-          containerCss={tableContainer}
-        />
-        <div css={createMarinaButtonContainer}>
+      <ContentContainer>
+        <DataTable columns={columns} data={marinaDataWithControls} />
+        <ContentContainer css={createMarinaButtonContainer}>
           <Button
             text={"Create a Marina"}
             onClick={() => navigate("/create-marina")}
           />
-        </div>
+        </ContentContainer>
       </ContentContainer>
     </PageContainer>
   );

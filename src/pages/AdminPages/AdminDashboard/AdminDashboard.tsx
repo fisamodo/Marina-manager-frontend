@@ -1,12 +1,11 @@
 import React from "react";
-import { IUser, UserType } from "../../../api-types";
+import { UserType } from "../../../api-types";
 import {
   usePromoteDepromoteUser,
   useUsers,
 } from "../../../api/userServices/user-api";
 import { PageContainer } from "../../components/PageContainer";
 import { NavBar } from "../../LandingPage/NavBar";
-import Table from "rc-table";
 import { DataTable } from "../../components/DataTable";
 import { css } from "@emotion/react";
 import { Button } from "../../components/Button";
@@ -25,11 +24,6 @@ export const AdminDashboard = () => {
 
   const buttonWidthStyle = css`
     width: 100%;
-  `;
-
-  const tableContainer = css`
-    display: flex;
-    justify-content: center;
   `;
 
   const columns = [
@@ -94,11 +88,7 @@ export const AdminDashboard = () => {
       <NavBar />
       <ContentContainer>
         <div>Admin Dashboard</div>
-        <DataTable
-          columns={columns}
-          data={userDataWithControls}
-          containerCss={tableContainer}
-        />
+        <DataTable columns={columns} data={userDataWithControls} />
       </ContentContainer>
     </PageContainer>
   );

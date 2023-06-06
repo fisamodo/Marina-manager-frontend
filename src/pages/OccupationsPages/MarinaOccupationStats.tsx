@@ -3,6 +3,7 @@ import { IMarina, IOccupancyStats } from "../../api-types";
 import { DataTable } from "../components/DataTable";
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
+import { ContentContainer } from "../components/ContentContainer";
 
 interface IMarinaOccupationStats {
   marina: IMarina;
@@ -33,18 +34,10 @@ export const MarinaOccupationStats: React.FC<IMarinaOccupationStats> = ({
       width: 150,
     },
   ];
-  const tableContainer = css`
-    display: flex;
-    justify-content: center;
-  `;
 
   return (
-    <div>
-      <DataTable
-        columns={columns}
-        data={occupationStats}
-        containerCss={tableContainer}
-      />
-    </div>
+    <ContentContainer>
+      <DataTable columns={columns} data={occupationStats} />
+    </ContentContainer>
   );
 };

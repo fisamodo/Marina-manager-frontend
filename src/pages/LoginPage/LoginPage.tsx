@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "../components/Button";
 import * as yup from "yup";
@@ -11,13 +11,15 @@ import { PageContainer } from "../components/PageContainer";
 import { css } from "@emotion/react";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { NavigateButton } from "../components/NavigateButton";
-import { useCurrentUser } from "../../stores/user-atom";
+import { useCurrentUser, useResetUserState } from "../../stores/user-atom";
 import { themeColors } from "../../utils/color-schema";
 import { useLoginUser } from "../../api/userServices/user-api";
+import { ContentContainer } from "../components/ContentContainer";
 
 export const LoginPage = () => {
   const [user, setUser] = useCurrentUser();
   const login = useLoginUser();
+  const resetUserState = useResetUserState();
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const navigate = useNavigate();
@@ -101,6 +103,10 @@ export const LoginPage = () => {
     password: yup.string().typeError("Password is required").required(),
   });
 
+  useEffect(() => {
+    resetUserState();
+  }, []);
+
   const methods = useForm({
     defaultValues: {
       email: "",
@@ -130,8 +136,8 @@ export const LoginPage = () => {
   });
   return (
     <PageContainer containerCss={pageContainerStyle}>
-      <div css={signupFormContainer}>
-        <div css={signinRedirectContainerStyle}>
+      <ContentContainer css={signupFormContainer}>
+        <ContentContainer css={signinRedirectContainerStyle}>
           <FormProvider {...(methods as any)}>
             <SimpleInputField
               id={"email"}
@@ -154,15 +160,15 @@ export const LoginPage = () => {
               containerCss={signInButtonStyle}
             />
           </FormProvider>
-        </div>
-        <div css={signupContainerStyle}>
+        </ContentContainer>
+        <ContentContainer css={signupContainerStyle}>
           <NavigateButton
             text={"Sign up"}
             navigateTo={"/signup"}
             containerCss={signUpButtonStyle}
           />
-        </div>
-      </div>
+        </ContentContainer>
+      </ContentContainer>
     </PageContainer>
   );
 };

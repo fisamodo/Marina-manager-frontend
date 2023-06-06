@@ -106,7 +106,7 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
     <PageContainer>
       <ContentContainer containerCss={formContentContainer}>
         <FormProvider {...(methods as any)}>
-          <div css={marinaNameFormPartContainer}>
+          <ContentContainer css={marinaNameFormPartContainer}>
             <SimpleInputField
               id={"marinaName"}
               name={"marinaName"}
@@ -123,7 +123,7 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
               fieldLabel="Water source"
               containerCss={formSwitchStyle}
             />
-          </div>
+          </ContentContainer>
           <SimpleInputField
             id={"maxNumberOfFerries"}
             name={"maxNumberOfFerries"}
@@ -164,10 +164,10 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
             fieldLabel="Yacht capacity: "
             containerCss={inputFieldMargins}
           />
-          <div css={formButtonsContainer}>
+          <ContentContainer css={formButtonsContainer}>
             <Button text={"Create"} onClick={onSubmit} />
             <Button text={"Cancel"} onClick={() => navigate(-1)} cancelButton />
-          </div>
+          </ContentContainer>
         </FormProvider>
       </ContentContainer>
     </PageContainer>

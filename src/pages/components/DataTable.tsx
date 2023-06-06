@@ -30,13 +30,17 @@ export const DataTable: React.FC<ITable> = ({
       text-align: center;
     }
   `;
+
+  const tableContainerStyle = css`
+    overflow-y: auto;
+  `;
   return (
-    <div css={[containerCss]}>
+    <div css={[tableContainerStyle, containerCss]}>
       <Table
         columns={columns}
         data={data}
         tableLayout="auto"
-        css={[tableStyle, tableStyle]}
+        css={[tableStyle, customTableStyle]}
       />
     </div>
   );

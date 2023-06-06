@@ -13,6 +13,7 @@ import { css } from "@emotion/react";
 import { SimpleInputField } from "../components/fields/SimpleInputField";
 import { themeColors } from "../../utils/color-schema";
 import { useRegisterUser } from "../../api/userServices/user-api";
+import { ContentContainer } from "../components/ContentContainer";
 
 export const SignupPage = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -123,14 +124,14 @@ export const SignupPage = () => {
   });
   return (
     <PageContainer containerCss={pageContainerStyle}>
-      <div css={signupFormContainer}>
-        <div css={signinRedirectContainerStyle}>
+      <ContentContainer css={signupFormContainer}>
+        <ContentContainer css={signinRedirectContainerStyle}>
           <Txt>Welcome Back</Txt>
           <Link to="/login">
             <Button text="Sign in" containerCss={signInButtonStyle}></Button>
           </Link>
-        </div>
-        <div css={signupContainerStyle}>
+        </ContentContainer>
+        <ContentContainer css={signupContainerStyle}>
           <FormProvider {...(methods as any)}>
             <SimpleInputField
               id={"firstName"}
@@ -167,8 +168,8 @@ export const SignupPage = () => {
               containerCss={signUpButtonStyle}
             />
           </FormProvider>
-        </div>
-      </div>
+        </ContentContainer>
+      </ContentContainer>
     </PageContainer>
   );
 };

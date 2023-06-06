@@ -110,7 +110,7 @@ export const CreateOccupationsForm: React.FC<ICreateOccupationsForm> = ({
             name={"boatType"}
             options={boatTypes}
           />
-          <div css={inputSwitchContainerStyle}>
+          <ContentContainer css={inputSwitchContainerStyle}>
             {marina.hasElectricPort && (
               <SimpleSwitchField
                 name={"isUsingElectricPort"}
@@ -125,7 +125,7 @@ export const CreateOccupationsForm: React.FC<ICreateOccupationsForm> = ({
                 containerCss={formSwitchStyle}
               />
             )}
-          </div>
+          </ContentContainer>
           <Button text={"Create"} onClick={onSubmit} />
         </FormProvider>
       </ContentContainer>

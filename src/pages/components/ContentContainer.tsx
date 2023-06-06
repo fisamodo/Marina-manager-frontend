@@ -4,6 +4,7 @@ import { css } from "@emotion/react";
 
 interface IContentContainer {
   containerCss?: any;
+  children?: any;
 }
 
 export const ContentContainer: FC<PropsWithChildren<IContentContainer>> = ({
