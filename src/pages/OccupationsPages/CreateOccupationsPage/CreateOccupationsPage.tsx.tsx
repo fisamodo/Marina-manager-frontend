@@ -25,7 +25,6 @@ export const CreateOccupationsPage = () => {
     return <div>Loading...</div>;
   }
 
-  console.log(marinaData);
   return (
     <PageContainer>
       <NavBar />

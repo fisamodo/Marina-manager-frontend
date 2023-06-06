@@ -13,14 +13,18 @@ import { CreateMarinaPage } from "./pages/AdminPages/AdminMarinaPage/CreateMarin
 import { EditMarinaPage } from "./pages/AdminPages/AdminMarinaPage/EditMarina/EditMarinaPage";
 import { OccupationsPage } from "./pages/OccupationsPages/OccupationsPage";
 import { CreateOccupationsPage } from "./pages/OccupationsPages/CreateOccupationsPage/CreateOccupationsPage.tsx";
+import { useUser } from "./api/userServices/user-api";
+import { useCurrentUser } from "./stores/user-atom";
 
 export const AppNavigator = () => {
+  const [user] = useCurrentUser();
+
   return (
     <Routes>
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/login" element={<LoginPage />} />
 
-      <Route element={<ProtectedRoutes />}>
+      <Route element={<ProtectedRoutes user={user} />}>
         <Route path="/" element={<LandingPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
@@ -28,7 +32,7 @@ export const AppNavigator = () => {
         <Route path="/create-occupations" element={<CreateOccupationsPage />} />
       </Route>
 
-      <Route element={<AdminRoutes />}>
+      <Route element={<AdminRoutes user={user} />}>
         <Route path="/admin-dashboard" element={<AdminDashboard />} />
         <Route path="/admin-marina" element={<AdminMarinaPage />} />
         <Route path="/create-marina" element={<CreateMarinaPage />} />

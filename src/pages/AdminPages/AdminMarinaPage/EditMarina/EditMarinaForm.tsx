@@ -84,7 +84,8 @@ export const EditMarinaForm: React.FC<IEditMarinaForm> = ({
       toast.success("Success");
     } catch (e: AxiosError | any) {
       console.error(e);
-      toast.error("Error occured while logging in.");
+      toast.error(e.response.data.message);
+      setIsSubmitting(false);
     }
   });
 

@@ -22,7 +22,11 @@ export interface IMarina {
   maxNumberOfFerries: number;
 }
 
-export type UserType = "admin" | "employee";
+export enum UserType {
+  EMPLOYEE,
+  ADMIN
+}
+
 
 export interface IOccupations {
   registrationNumber: string;

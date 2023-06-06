@@ -13,7 +13,6 @@ export const MarinaOccupationStats: React.FC<IMarinaOccupationStats> = ({
   marina,
   occupationStats,
 }) => {
-  console.log(occupationStats);
   const columns = [
     {
       title: "Boat type",

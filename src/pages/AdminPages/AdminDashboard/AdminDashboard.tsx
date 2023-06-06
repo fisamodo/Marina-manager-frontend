@@ -1,5 +1,5 @@
 import React from "react";
-import { IUser } from "../../../api-types";
+import { IUser, UserType } from "../../../api-types";
 import {
   usePromoteDepromoteUser,
   useUsers,
@@ -72,7 +72,7 @@ export const AdminDashboard = () => {
     },
   ];
   const userDataWithControls = userData?.map((data, index) => {
-    const promotion = data.userType === "admin" ? "employee" : "admin";
+    const promotion = data.userType === UserType.ADMIN ? "employee" : "admin";
     return {
       ...data,
       button: (
@@ -82,7 +82,7 @@ export const AdminDashboard = () => {
               promotion === "admin" ? "Promote" : "Depromote"
             } to ${promotion}`}
             onClick={() => promoteDepromoteUser(data._id)}
-            disabled={data.userType === "admin" && true}
+            disabled={data.userType === UserType.ADMIN && true}
             containerCss={buttonWidthStyle}
           />
         </div>

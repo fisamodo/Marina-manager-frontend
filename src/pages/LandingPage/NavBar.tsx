@@ -8,6 +8,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import { themeColors } from "../../utils/color-schema";
 import { useLogoutUser } from "../../api/userServices/user-api";
+import { UserType } from "../../api-types";
 
 export const NavBar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
@@ -26,7 +27,6 @@ export const NavBar = () => {
     color: #fff;
     margin: 1rem 0rem;
   `;
-
   return (
     <Navbar css={navbarBackgroundStyle} expand="lg">
       <Container>
@@ -42,7 +42,7 @@ export const NavBar = () => {
                 {name}
               </Nav.Link>
             ))}
-            {user.userType === "admin" &&
+            {user.userType === UserType.ADMIN &&
               adminRoutes.map(({ name, route, isAdminRoute }, index) => (
                 <Nav.Link
                   href={route}
