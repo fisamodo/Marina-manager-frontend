@@ -40,6 +40,8 @@ export const LoginPage = () => {
       flex-direction: column;
       box-shadow: 0, 0, 0;
       border-radius: 0px;
+      width: 100%;
+      height: 100%;
     }
   `;
 
@@ -52,9 +54,11 @@ export const LoginPage = () => {
     background-color: ${themeColors.primary};
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    border-radius: 12px;
+
     @media (max-width: 725px) {
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
     }
   `;
 
@@ -72,11 +76,11 @@ export const LoginPage = () => {
   const signInButtonStyle = css`
     background-color: #fff;
     padding: 0.625rem 2rem;
-    width: 50%;
+    width: 80%;
   `;
 
   const signUpButtonStyle = css`
-    width: 75%;
+    width: 80%;
   `;
 
   const inputFieldContainerStyle = css`
@@ -136,8 +140,8 @@ export const LoginPage = () => {
   });
   return (
     <PageContainer containerCss={pageContainerStyle}>
-      <ContentContainer css={signupFormContainer}>
-        <ContentContainer css={signinRedirectContainerStyle}>
+      <ContentContainer containerCss={signupFormContainer}>
+        <ContentContainer containerCss={signinRedirectContainerStyle}>
           <FormProvider {...(methods as any)}>
             <SimpleInputField
               id={"email"}
@@ -161,7 +165,7 @@ export const LoginPage = () => {
             />
           </FormProvider>
         </ContentContainer>
-        <ContentContainer css={signupContainerStyle}>
+        <ContentContainer containerCss={signupContainerStyle}>
           <NavigateButton
             text={"Sign up"}
             navigateTo={"/signup"}

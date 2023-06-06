@@ -19,19 +19,28 @@ export const OccupationsPage = () => {
   if (marinaIsLoading) {
     return <div>Loading...</div>;
   }
+
+  const occupancyContainerStyle = css`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  `;
+
   return (
     <PageContainer>
       <NavBar />
-      <MarinaOccupationStats
-        marina={marinaData?.marina!}
-        occupationStats={marinaData?.occupancy!}
-      />
-      <ContentContainer>
-        The marina that you belong to: {marinaData?.marina.marinaName}
-        <Button
-          text={"Create a new occupation"}
-          onClick={() => navigate("/create-occupations")}
+      <ContentContainer containerCss={occupancyContainerStyle}>
+        <MarinaOccupationStats
+          marina={marinaData?.marina!}
+          occupationStats={marinaData?.occupancy!}
         />
+        <ContentContainer>
+          The marina that you belong to: {marinaData?.marina.marinaName}
+          <Button
+            text={"Create a new occupation"}
+            onClick={() => navigate("/create-occupations")}
+          />
+        </ContentContainer>
       </ContentContainer>
     </PageContainer>
   );

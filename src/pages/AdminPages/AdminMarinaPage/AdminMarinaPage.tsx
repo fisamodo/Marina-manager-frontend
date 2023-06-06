@@ -115,7 +115,7 @@ export const AdminMarinaPage = () => {
       <NavBar />
       <ContentContainer>
         <DataTable columns={columns} data={marinaDataWithControls} />
-        <ContentContainer css={createMarinaButtonContainer}>
+        <ContentContainer containerCss={createMarinaButtonContainer}>
           <Button
             text={"Create a Marina"}
             onClick={() => navigate("/create-marina")}

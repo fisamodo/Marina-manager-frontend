@@ -37,6 +37,7 @@ export const Button: React.FC<IButtonProps> = ({
     border: 0.6px solid #000000;
     cursor: pointer;
     margin: 1rem 0rem;
+    justify-content: center;
     background-color: ${themeColors.primary};
     &:disabled {
       background-color: ${themeColors.primaryGrey};

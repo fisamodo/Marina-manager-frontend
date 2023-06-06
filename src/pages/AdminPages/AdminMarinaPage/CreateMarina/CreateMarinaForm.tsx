@@ -62,6 +62,10 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 0;
+    @media (max-width: 725px) {
+      flex-direction: column;
+    }
   `;
 
   const formSwitchStyle = css`
@@ -72,6 +76,8 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
   const formContentContainer = css`
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem;
   `;
 
   const inputFieldMargins = css`
@@ -81,7 +87,18 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
 
   const formButtonsContainer = css`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    padding: 0px;
+    width: 100%;
+    justify-content: flex-end;
+    @media (max-width: 725px) {
+      justify-content: center;
+      align-self: center;
+    }
+  `;
+
+  const submitButtonsPadding = css`
+    margin: 0.5rem;
   `;
 
   const onSubmit = methods.handleSubmit(async (values) => {
@@ -106,7 +123,7 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
     <PageContainer>
       <ContentContainer containerCss={formContentContainer}>
         <FormProvider {...(methods as any)}>
-          <ContentContainer css={marinaNameFormPartContainer}>
+          <ContentContainer containerCss={marinaNameFormPartContainer}>
             <SimpleInputField
               id={"marinaName"}
               name={"marinaName"}
@@ -164,9 +181,18 @@ export const CreateMarinaForm: React.FC<ICreateMarinaForm> = ({
             fieldLabel="Yacht capacity: "
             containerCss={inputFieldMargins}
           />
-          <ContentContainer css={formButtonsContainer}>
-            <Button text={"Create"} onClick={onSubmit} />
-            <Button text={"Cancel"} onClick={() => navigate(-1)} cancelButton />
+          <ContentContainer containerCss={formButtonsContainer}>
+            <Button
+              text={"Create"}
+              onClick={onSubmit}
+              containerCss={submitButtonsPadding}
+            />
+            <Button
+              text={"Cancel"}
+              onClick={() => navigate(-1)}
+              cancelButton
+              containerCss={submitButtonsPadding}
+            />
           </ContentContainer>
         </FormProvider>
       </ContentContainer>

@@ -97,7 +97,7 @@ export const EditMarinaForm: React.FC<IEditMarinaForm> = ({
     <PageContainer>
       <ContentContainer containerCss={formContentContainer}>
         <FormProvider {...(methods as any)}>
-          <ContentContainer css={marinaNameFormPartContainer}>
+          <ContentContainer containerCss={marinaNameFormPartContainer}>
             <SimpleInputField
               id={"marinaName"}
               name={"marinaName"}
@@ -155,7 +155,7 @@ export const EditMarinaForm: React.FC<IEditMarinaForm> = ({
             fieldLabel="Yacht capacity: "
             containerCss={inputFieldMargins}
           />
-          <ContentContainer css={formButtonsContainer}>
+          <ContentContainer containerCss={formButtonsContainer}>
             <Button text={"Update"} onClick={onSubmit} />
             <Button text={"Cancel"} onClick={() => navigate(-1)} cancelButton />
           </ContentContainer>

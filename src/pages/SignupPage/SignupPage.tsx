@@ -35,6 +35,8 @@ export const SignupPage = () => {
       0px 3px 4px 0px rgb(0 0 0 / 14%), 0px 1px 8px 0px rgb(0 0 0 / 12%);
     @media (max-width: 725px) {
       flex-direction: column;
+      width: 100%;
+      height: 100%;
     }
   `;
 
@@ -47,9 +49,11 @@ export const SignupPage = () => {
     background-color: ${themeColors.primary};
     border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
+    border-radius: 12px;
+
     @media (max-width: 725px) {
-      border-top-left-radius: 0px;
-      border-bottom-left-radius: 0px;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
     }
   `;
 
@@ -124,14 +128,14 @@ export const SignupPage = () => {
   });
   return (
     <PageContainer containerCss={pageContainerStyle}>
-      <ContentContainer css={signupFormContainer}>
-        <ContentContainer css={signinRedirectContainerStyle}>
+      <ContentContainer containerCss={signupFormContainer}>
+        <ContentContainer containerCss={signinRedirectContainerStyle}>
           <Txt>Welcome Back</Txt>
           <Link to="/login">
             <Button text="Sign in" containerCss={signInButtonStyle}></Button>
           </Link>
         </ContentContainer>
-        <ContentContainer css={signupContainerStyle}>
+        <ContentContainer containerCss={signupContainerStyle}>
           <FormProvider {...(methods as any)}>
             <SimpleInputField
               id={"firstName"}

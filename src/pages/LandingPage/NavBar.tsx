@@ -9,15 +9,18 @@ import Navbar from "react-bootstrap/Navbar";
 import { themeColors } from "../../utils/color-schema";
 import { useLogoutUser } from "../../api/userServices/user-api";
 import { UserType } from "../../api-types";
+import { useNavigate } from "react-router";
 
 export const NavBar = () => {
   const [showNavbar, setShowNavbar] = useState(false);
   const [user] = useCurrentUser();
+  const navigation = useNavigate();
   const resetUserState = useResetUserState();
   const logout = useLogoutUser();
   const handleLogout = async () => {
-    resetUserState();
+    navigation("/login");
     logout();
+    resetUserState();
   };
 
   const navbarBackgroundStyle = css`
@@ -25,6 +28,8 @@ export const NavBar = () => {
   `;
   const navbarLinksStyle = css`
     color: #fff;
+    font-size: 1.1rem;
+    letter-spacing: 2px;
     margin: 1rem 0rem;
   `;
   return (
