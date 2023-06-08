@@ -3,6 +3,7 @@ Frontend for Marina manager app
 
 How to start: 
 - .env file is required to start
+- Run "npm i"
 - Run "npm run start"
 
 About the project:
