@@ -10,6 +10,7 @@ import { DataTable } from "../../components/DataTable";
 import { css } from "@emotion/react";
 import { Button } from "../../components/Button";
 import { ContentContainer } from "../../components/ContentContainer";
+import { adminDashboardTableSchemaColumns } from "../../../utils/table-schema";
 /** @jsxImportSource @emotion/react */
 
 export const AdminDashboard = () => {
@@ -26,45 +27,6 @@ export const AdminDashboard = () => {
     width: 100%;
   `;
 
-  const columns = [
-    {
-      title: "First name",
-      dataIndex: "firstName",
-      key: "firstName",
-      width: 200,
-    },
-    {
-      title: "Last name",
-      dataIndex: "lastName",
-      key: "lastname",
-      width: 200,
-    },
-    {
-      title: "Email",
-      dataIndex: "email",
-      key: "email",
-      width: 100,
-    },
-
-    {
-      title: "Marina ID",
-      dataIndex: "marinaId",
-      key: "marinaId",
-      width: 100,
-    },
-    {
-      title: "User type",
-      dataIndex: "userType",
-      key: "userType",
-      width: 150,
-    },
-    {
-      title: "Action",
-      dataIndex: "button",
-      key: "button",
-      width: 300,
-    },
-  ];
   const userDataWithControls = userData?.map((data, index) => {
     const promotion = data.userType === UserType.ADMIN ? "employee" : "admin";
     return {
@@ -88,7 +50,10 @@ export const AdminDashboard = () => {
       <NavBar />
       <ContentContainer>
         <div>Admin Dashboard</div>
-        <DataTable columns={columns} data={userDataWithControls} />
+        <DataTable
+          columns={adminDashboardTableSchemaColumns}
+          data={userDataWithControls}
+        />
       </ContentContainer>
     </PageContainer>
   );

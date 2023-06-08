@@ -8,6 +8,7 @@ import { NavBar } from "../../LandingPage/NavBar";
 import { css } from "@emotion/react";
 import { useNavigate } from "react-router-dom";
 import { ContentContainer } from "../../components/ContentContainer";
+import { adminMarinaPageTableScehmaColumns } from "../../../utils/table-schema";
 
 export const AdminMarinaPage = () => {
   const { data: marinaData, isLoading, isError } = useMarinas();
@@ -53,68 +54,14 @@ export const AdminMarinaPage = () => {
     };
   });
 
-  const columns = [
-    {
-      title: "Marina name",
-      dataIndex: "marinaName",
-      key: "marinaName",
-      width: 150,
-    },
-    {
-      title: "Water source",
-      dataIndex: "hasWaterSource",
-      key: "hasWaterSource",
-      width: 150,
-    },
-    {
-      title: "Electric port",
-      dataIndex: "hasElectricPort",
-      key: "hasElectricPort",
-      width: 150,
-    },
-    {
-      title: "Max number of ferries",
-      dataIndex: "maxNumberOfFerries",
-      key: "email",
-      width: 100,
-    },
-    {
-      title: "Max number of sail boats",
-      dataIndex: "maxNumberOfSailBoats",
-      key: "userType",
-      width: 150,
-    },
-    {
-      title: "Max number of small boats",
-      dataIndex: "maxNumberOfSmallBoats",
-      key: "maxNumberOfSmallBoats",
-      width: 150,
-    },
-    {
-      title: "Max number of speed boats",
-      dataIndex: "maxNumberOfSpeedBoats",
-      key: "maxNumberOfSpeedBoats",
-      width: 100,
-    },
-    {
-      title: "Max number of yacths",
-      dataIndex: "maxNumberOfYachts",
-      key: "maxNumberOfYachts",
-      width: 150,
-    },
-    {
-      title: "Action",
-      dataIndex: "button",
-      key: "button",
-      width: 300,
-    },
-  ];
-
   return (
     <PageContainer>
       <NavBar />
       <ContentContainer>
-        <DataTable columns={columns} data={marinaDataWithControls} />
+        <DataTable
+          columns={adminMarinaPageTableScehmaColumns}
+          data={marinaDataWithControls}
+        />
         <ContentContainer containerCss={createMarinaButtonContainer}>
           <Button
             text={"Create a Marina"}
